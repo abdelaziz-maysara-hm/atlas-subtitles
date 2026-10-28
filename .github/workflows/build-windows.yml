@@ -62,6 +62,26 @@ jobs:
           if ($g.HasExited) { throw "GUI exited early with code $($g.ExitCode)" }
           Stop-Process -Id $g.Id
 
+      - name: Speech self-test (Windows TTS clip -> frozen app -> tiny model)
+        shell: pwsh
+        run: |
+          $app = "build_out/Atlas_Subtitles/Atlas_Subtitles.exe"
+          $wav = Join-Path $PWD "speech.wav"
+          $tts = @'
+          Add-Type -AssemblyName System.Speech
+          $s = New-Object System.Speech.Synthesis.SpeechSynthesizer
+          $s.SetOutputToWaveFile($args[0])
+          $s.Speak("Hello and welcome. This is a short test of the automatic subtitles program. It should write these words on the screen.")
+          $s.Dispose()
+          '@
+          Set-Content -Path tts.ps1 -Value $tts
+          powershell.exe -NoProfile -ExecutionPolicy Bypass -File tts.ps1 $wav
+          if (-not (Test-Path $wav)) { Write-Warning "Windows TTS not available on this runner; skipping speech test"; exit 0 }
+          $p = Start-Process $app -ArgumentList "--selftest", "`"$wav`"", "speech.json", "tiny" -Wait -PassThru
+          Get-Content speech.json
+          $r = Get-Content speech.json -Raw | ConvertFrom-Json
+          if (-not $r.ok -or $r.segments.Count -lt 1) { throw "speech selftest failed" }
+
       - uses: actions/upload-artifact@v4
         with:
           name: Atlas_Subtitles_Win
