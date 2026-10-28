@@ -55,4 +55,6 @@ downloads FFmpeg (BtbN win64 GPL build), builds a PyInstaller one-folder app wit
 smoke-tests the built exe (bundled ffmpeg + model download + GUI start) and uploads `Atlas_Subtitles_Win.zip`.
 
 ## License
-Not chosen yet — see [NOTICE.md](NOTICE.md) for third-party licenses and the points to decide (FFmpeg GPL build, code signing).
+The app's own code is **MIT** — see [LICENSE](LICENSE). Third-party components (FFmpeg, models, fonts) keep their own
+licenses — see [NOTICE.md](NOTICE.md). Note: the Windows zip ships the BtbN **GPL** FFmpeg build as separate
+`ffmpeg.exe` / `ffprobe.exe`; its license text is included as `FFmpeg-LICENSE.txt` and its source is linked in NOTICE.md.

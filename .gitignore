@@ -10,3 +10,4 @@ ffprobe.exe
 ffmpeg_tmp/
 ffmpeg.zip
 models/
+FFmpeg-LICENSE.txt

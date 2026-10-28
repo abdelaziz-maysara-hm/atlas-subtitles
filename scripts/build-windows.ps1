@@ -25,7 +25,8 @@ foreach ($exe in @("ffmpeg.exe", "ffprobe.exe")) {
   if (-not (Test-Path $exe)) { throw "$exe not found in repo root" }
   Copy-Item $exe -Destination $out
 }
-Copy-Item README.md, MANUAL.md, NOTICE.md -Destination $out
+Copy-Item README.md, MANUAL.md, NOTICE.md, LICENSE -Destination $out
+if (Test-Path FFmpeg-LICENSE.txt) { Copy-Item FFmpeg-LICENSE.txt -Destination $out }
 # smoke test of the frozen core: probe a generated clip with the bundled ffmpeg (no model download)
 & "$out/ffmpeg.exe" -v error -y -f lavfi -i "sine=frequency=440:duration=2" "$env:TEMP/atlas_t.wav"
 if ($LASTEXITCODE -ne 0) { throw "bundled ffmpeg failed" }

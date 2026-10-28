@@ -13,13 +13,15 @@
 | Noto Sans Arabic font (static Bold instance, renamed) | burned subtitles | SIL OFL 1.1 |
 | Python, Tcl/Tk | runtime | PSF / Tcl license |
 
-## License of this app — owner decision pending / رخصة التطبيق — لم تُحدد بعد
+## License of this app / رخصة التطبيق
 
-No license file has been added on purpose; the owner chooses. Notes for that decision:
+The app's own code is **MIT** (see [LICENSE](LICENSE)). The components above keep their own licenses.
 
-- The FFmpeg build that the Windows package ships is **GPL** (it contains libx264). Shipping it next to the app is
-  fine with any app license as long as the zip also offers the FFmpeg source / a link to the exact build and its
-  license (BtbN publishes both). If you want to avoid GPL completely, switch the workflow to an **LGPL** FFmpeg build
+- The FFmpeg build that the Windows package ships is **GPL v3** (it contains libx264). It is shipped as separate,
+  unmodified programs (`ffmpeg.exe`, `ffprobe.exe`) next to the app, not linked into it. The zip includes FFmpeg's license
+  text as `FFmpeg-LICENSE.txt`. Corresponding source: FFmpeg https://github.com/FFmpeg/FFmpeg and the build scripts
+  https://github.com/BtbN/FFmpeg-Builds (the exact build is from the `latest` release on the build date). Whoever
+  redistributes the zip should check they meet the GPL's source-offer terms; this has not been reviewed by a lawyer. If you want to avoid GPL completely, switch the workflow to an **LGPL** FFmpeg build
   (`ffmpeg-master-latest-win64-lgpl.zip`) — burning then falls back to the `mpeg4` encoder automatically (bigger files,
   lower quality), because libx264 is GPL-only.
 - Free code signing (e.g. SignPath Foundation) requires an OSI-approved open-source license (MIT, Apache-2.0, GPL...).

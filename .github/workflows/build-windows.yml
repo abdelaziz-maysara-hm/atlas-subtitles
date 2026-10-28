@@ -39,6 +39,8 @@ jobs:
             if (-not $f) { throw "$n not found" }
             Copy-Item $f.FullName -Destination $n
           }
+          $lic = Get-ChildItem -Path ffmpeg_tmp -Recurse -Filter "LICENSE*" | Select-Object -First 1
+          if ($lic) { Copy-Item $lic.FullName -Destination FFmpeg-LICENSE.txt } else { Write-Warning "FFmpeg LICENSE not found in zip" }
           ./ffmpeg.exe -hide_banner -filters | Select-String "subtitles"
 
       - name: Build
