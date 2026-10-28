@@ -1,0 +1,2 @@
+small: WER=0.339 CER=0.177 wall=67s RTF=0.066 segs=153
+medium: WER=0.242 CER=0.142 wall=179s RTF=0.178 segs=151

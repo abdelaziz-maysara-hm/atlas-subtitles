@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.venv*/
+build/
+build_out/
+dist/
+*.spec
+ffmpeg.exe
+ffprobe.exe
+ffmpeg_tmp/
+ffmpeg.zip
+models/

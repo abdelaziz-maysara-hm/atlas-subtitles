@@ -1,0 +1,5 @@
+-r requirements.txt
+pyinstaller==6.22.3
+pytest
+jiwer          # WER evaluation (tests/eval_wer.py)
+edge-tts       # regenerate TTS test clips (tests only, needs internet)

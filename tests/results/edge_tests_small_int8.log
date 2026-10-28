@@ -1,0 +1,16 @@
+PASS missing file  | code=file_not_found detail='../testdata/nope.mp4'
+PASS not a media file  | code=not_media detail='[mov,mp4,m4a,3gp,3g2,mj2 @ 0x55a6ddc60f40] moov atom not found\n../testdata/garba'
+PASS video without audio track  | code=no_audio detail='../testdata/noaudio.mp4'
+PASS silent audio track  | code=no_speech detail=''
+PASS burn on audio-only file  | code=no_video detail='../testdata/msa_news.mp3'
+PASS offline model download -> clean error  | 0.3s CODE model_download_failed LocalEntryNotFoundError: Got: ConnectError: [Errno 111] Connection refused
+An error happened while trying to locate the 
+PASS long file progress monotonic  | 45 updates, first=[(0.1, 'loading', 0.0), (0.3, 'extract', 0.1), (0.3, 'extract', 0.1)]
+PASS long file segments valid (no overlap/neg)
+PASS long file covers whole duration  | 153 segs, first 0.4s last end 1003.4s of 1004s
+PASS long file timings  | model=small wall=66.0s RTF=0.066 {"model_load": 0.0, "extract": 0.3, "transcribe": 65.7}
+PASS SRT round-trip  | 153 vs 153
+PASS no duplicated consecutive captions  | dups=0
+PASS cancel transcription  | stopped after 8.6s (cancel at 4s)
+PASS cancel burn  | 3.2s, partial removed=True
+FAILURES: 0

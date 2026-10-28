@@ -1,0 +1,5 @@
+# Runtime (versions tested on the build box, 2026-10)
+faster-whisper==1.2.1
+ctranslate2==4.8.4
+customtkinter==6.0.0
+tkinterdnd2==0.7.0
